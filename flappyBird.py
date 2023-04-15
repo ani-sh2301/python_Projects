@@ -100,9 +100,9 @@ class bird(pygame.sprite.Sprite):
         
         if game_over==False :
             #jump
-            if pygame.mouse.get_pressed()[0] == 1 and self.clicked==False:
+            if pygame.mouse.get_pressed()[0] == 1 or pygame.key.get_pressed()[pygame.K_SPACE] and self.clicked==False:
                 self.clicked=True
-                self.val= -8
+                self.val= -6
             if pygame.mouse.get_pressed()[0] == 0:
                 self.clicked=False
             
@@ -236,6 +236,7 @@ while run:
     if game_over==True:
         #display high score
         high_score_update()
+        draw_text("Player Score: "+ str(score),font2,black,int(window_width//2-65),int(window_height/2-35))
         draw_text("High Score: "+str(high_score),font2,black,int(window_width//2-65),int(window_height/2))
         if btn.draw()==True:
             game_over=False
